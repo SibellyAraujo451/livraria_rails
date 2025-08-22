@@ -1,0 +1,42 @@
+<div class="emprestimos-container">
+  <h1>Empréstimos</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Pessoa</th>
+        <th>Livro</th>
+        <th>Data de Início</th>
+        <th>Data de Devolução</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @emprestimos.each do |emprestimo| %>
+        <tr>
+          <td><%= emprestimo.pessoa.nome %></td>
+          <td><%= emprestimo.livro.titulo %></td>
+          <td><%= emprestimo.data_inicio&.strftime("%d/%m/%Y") || "Não definido" %></td>
+          
+          <td style="color: <%= emprestimo.data_fim && emprestimo.data_fim < Date.today ? 'red' : 'black' %>;">
+            <%= emprestimo.data_fim&.strftime("%d/%m/%Y") || "Não definido" %>
+          </td>
+
+          <td>
+            <%= emprestimo.data_fim && emprestimo.data_fim >= Date.today ? 'Ativo' : 'Finalizado' %>
+          </td>
+
+          <td>
+            <%= link_to "Ver", emprestimo_path(emprestimo), class: "btn btn-info" %>
+            <%= link_to "Editar", edit_emprestimo_path(emprestimo), class: "btn btn-primary" %>
+            <%= link_to "Deletar", emprestimo_path(emprestimo), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "Novo Empréstimo", new_emprestimo_path, class: "btn btn-success" %>
+  <%= link_to "Voltar ao Menu", root_path, class: "btn btn-secondary" %>
+</div>

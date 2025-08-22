@@ -1,0 +1,33 @@
+<%= form_with(model: @emprestimo, local: true) do |form| %>
+  <div class="emprestimo-form">
+    <!-- Pessoa -->
+    <div class="campo">
+      <%= form.label :pessoa_id, "Pessoa" %>
+      <%= form.collection_select :pessoa_id, Pessoa.all, :id, :nome, prompt: "Escolha uma pessoa", class: "input-field" %>
+    </div>
+
+    <!-- Livro -->
+    <div class="campo">
+      <%= form.label :livro_id, "Livro" %>
+      <%= form.collection_select :livro_id, Livro.all, :id, :titulo, prompt: "Escolha um livro", class: "input-field" %>
+    </div>
+
+    <!-- Datas -->
+    <div class="campo">
+      <%= form.label :data_inicio, "Data do Empréstimo" %>
+      <%= form.date_field :data_inicio, class: "input-field" %>
+    </div>
+
+    <div class="campo">
+      <%= form.label :data_fim, "Data da Devolução" %>
+      <%= form.date_field :data_fim, class: "input-field" %>
+    </div>
+
+    <!-- Botões -->
+    <div class="acoes">
+      <%= form.submit "Salvar Empréstimo", class: "btn btn-primary" %>
+      <%= link_to "Cancelar", emprestimos_path, class: "btn btn-danger" %>
+      <%= link_to "Voltar", emprestimos_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+<% end %>

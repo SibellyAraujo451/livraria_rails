@@ -1,0 +1,9 @@
+<div class="livro-show">
+  <%= render @livro %>
+
+  <div class="botoes-livro">
+    <%= link_to "Editar", edit_livro_path(@livro), class: "btn" %>
+    <%= link_to "Voltar", livros_path, class: "btn" %>
+<%= button_to "Excluir livro", @livro, method: :delete, class: "btn-delete" %>
+  </div>
+</div>

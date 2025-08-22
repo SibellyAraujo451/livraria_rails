@@ -1,0 +1,9 @@
+<% content_for :title, "Editing livro" %>
+
+<h1>Editar Livro</h1>
+
+<%= form_with(model: @livro, html: { class: "livro-form" }) do |form| %>
+  <%= render 'form', livro: @livro %> <!-- campos do formulário -->
+
+
+<% end %>

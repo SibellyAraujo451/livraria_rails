@@ -1,0 +1,7 @@
+<% @livros.each do |livro| %>
+  <tr>
+    <td><%= livro.titulo %></td>
+    <td><%= link_to 'Mostrar', livro_path(livro) %></td>
+    <td><%= link_to 'Editar', edit_livro_path(livro) %></td>
+  </tr>
+<% end %>

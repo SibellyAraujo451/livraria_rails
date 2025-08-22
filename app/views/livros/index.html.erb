@@ -1,0 +1,24 @@
+<%# Mensagem de aviso/notice %>
+<% if notice %>
+  <p class="notice"><%= notice %></p>
+<% end %>
+
+<% content_for :title, "Livros" %>
+
+<h1>Livros</h1>
+
+<div class="top-buttons">
+  <%= link_to "Adicionar novo livro", new_livro_path, class: "btn btn-new" %>
+  <%= link_to "Voltar ao menu inicial", root_path, class: "btn btn-back" %>
+</div>
+
+<div id="livros">
+  <% @livros.each do |livro| %>
+    <div class="livro-card">
+      <%= render livro %>
+      <p>
+        <%= link_to "Ver detalhes", livro, class: "btn-show" %>
+      </p>
+    </div>
+  <% end %>
+</div>

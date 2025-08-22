@@ -1,0 +1,34 @@
+<div class="emprestimo-show">
+  <div class="container">
+
+    <% if notice %>
+      <div class="alert alert-success"><%= notice %></div>
+    <% end %>
+
+    <h1>Detalhes do Empréstimo</h1>
+
+    <p><strong>Pessoa:</strong> <%= @emprestimo.pessoa.nome %></p>
+    <p><strong>Livro:</strong> <%= @emprestimo.livro.titulo %></p>
+
+    <p><strong>Data de Início:</strong> 
+      <%= @emprestimo.data_inicio&.strftime("%d/%m/%Y") || "Não definido" %>
+    </p>
+
+    <p><strong>Data de Fim:</strong> 
+      <span style="color: <%= @emprestimo.data_fim && @emprestimo.data_fim < Date.today ? 'red' : 'black' %>;">
+        <%= @emprestimo.data_fim&.strftime("%d/%m/%Y") || "Não definido" %>
+      </span>
+    </p>
+
+    <p><strong>Status:</strong> 
+      <%= @emprestimo.data_fim && @emprestimo.data_fim >= Date.today ? 'Ativo' : 'Finalizado' %>
+    </p>
+
+    <div class="emprestimo-actions">
+      <%= link_to "Editar", edit_emprestimo_path(@emprestimo), class: "btn btn-warning" %>
+      <%= link_to "Voltar", emprestimos_path, class: "btn btn-secondary" %>
+      <%= button_to "Excluir", @emprestimo, method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger" %>
+    </div>
+
+  </div>
+</div>

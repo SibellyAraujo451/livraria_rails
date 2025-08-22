@@ -1,0 +1,56 @@
+<div class="pessoas-container">
+  <h1>Pessoas</h1>
+
+  <!-- Botão para voltar à página inicial -->
+  <%= link_to "Voltar para Início", root_path, class: "btn btn-warning" %>
+
+  <!-- Mensagens de alerta -->
+  <% if notice %>
+    <div class="alert alert-success"><%= notice %></div>
+  <% end %>
+  <% if alert %>
+    <div class="alert alert-error"><%= alert %></div>
+  <% end %>
+
+  <!-- Botão para criar nova pessoa -->
+  <%= link_to "Nova Pessoa", new_pessoa_path, class: "btn" %>
+
+  <!-- Tabela de Pessoas -->
+  <table class="pessoas-table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Status</th> <!-- coluna de status adicionada -->
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pessoas.each do |pessoa| %>
+        <tr>
+          <td><%= pessoa.nome %></td>
+          <td><%= pessoa.email %></td>
+          <td><%= pessoa.telefone %></td>
+          
+          <!-- Status -->
+          <td>
+            <% if pessoa.emprestimos.where(data_fim: nil).exists? %>
+              <span style="color: red;">Indisponível</span>
+            <% else %>
+              <span style="color: green;">Disponível</span>
+            <% end %>
+          </td>
+
+          <td class="action-links">
+            <%= link_to "Editar", edit_pessoa_path(pessoa), class: "btn" %>
+            <%= button_to "Deletar", pessoa_path(pessoa), 
+                method: :delete, 
+                data: { confirm: "Tem certeza que deseja deletar esta pessoa?" }, 
+                class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
