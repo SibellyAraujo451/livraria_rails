@@ -1,24 +1,16 @@
-# README
+# 📚 Livraria
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sistema de gerenciamento de **pessoas, livros e empréstimos**, desenvolvido em **Ruby on Rails**.
 
-Things you may want to cover:
+## 🚀 Funcionalidades
 
-* Ruby version
+* Cadastro, edição e exclusão de pessoas, livros e empréstimos
+* Status de **disponibilidade** para pessoas e livros
+* Controle de datas de início e devolução dos empréstimos
+* Interface simples e intuitiva
 
-* System dependencies
+## 🛠️ Tecnologias
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby on Rails
+* SQLite
+* HTML, CSS, ERB
