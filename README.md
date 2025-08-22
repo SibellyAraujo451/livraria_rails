@@ -13,4 +13,3 @@ Sistema de gerenciamento de **pessoas, livros e empréstimos**, desenvolvido em 
 
 * Ruby on Rails
 * SQLite
-* HTML, CSS, ERB
